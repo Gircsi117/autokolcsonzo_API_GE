@@ -5,17 +5,17 @@ const session = require("express-session")
 const cors = require("cors");
 require("dotenv").config();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
-
+app.use(express.urlencoded({extended:true}))
 app.use(cors());
 app.use(session({
     secret:"secret",
     resave: true,
     saveUninitialized: true
 }))
-app.use("/", router)
 
+app.use("/", router)
 
 app.listen(port, (err)=>{
     if (err) {
