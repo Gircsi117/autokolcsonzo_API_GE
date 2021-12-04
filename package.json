@@ -1,0 +1,20 @@
+{
+  "name": "autokolcsonzo_api_ge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gircsi117/autokolcsonzo_API_GE.git"
+  },
+  "author": "GE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gircsi117/autokolcsonzo_API_GE/issues"
+  },
+  "homepage": "https://github.com/Gircsi117/autokolcsonzo_API_GE#readme"
+}
