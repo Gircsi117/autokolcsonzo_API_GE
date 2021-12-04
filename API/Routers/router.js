@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const getControl = require("../Controlls/getControl");
-const postControl = require("../Controlls/postControl");
-const deleteControl = require("../Controlls/deleteControl");
-const updateControl = require("../Controlls/updateControl");
+const getControler = require("../Controllers/getControler");
+const postControler = require("../Controllers/postControler");
+const deleteControler = require("../Controllers/deleteControler");
+const updateControler = require("../Controllers/updateControler");
 
-router.get("/", getControl.home)
+router.get("/", getControler.home)
 
 
 
