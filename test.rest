@@ -6,7 +6,16 @@ POST http://localhost:3000/reg HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Bálint",
-    "pass": "mongoose",
-    "email": "balint@balint.hu"
+    "name": "Erik",
+    "pass": "alma123",
+    "email": "erik@erik.hu"
+}
+
+###POST login
+POST http://localhost:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "erik@erik.hu",
+    "pass": "almaaa"
 }

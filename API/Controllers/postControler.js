@@ -1,1 +1,0 @@
-const pool = require("../Models/databaseModel")

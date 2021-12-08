@@ -1,0 +1,60 @@
+body{
+    background-image: url('../Images/background.jpeg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position: center;
+    backdrop-filter: blur(5px);
+}
+
+em{
+    color: red;
+}
+
+.container{
+    background-color: rgba(33, 33, 33, 0.9);
+    min-height: 100vh;
+}
+
+.user-form input{
+    font-weight: bold;
+    width: 100%;
+    padding: 15px;
+    margin: 10px auto;
+    color: white;
+    font-size: 120%;
+    background-color: rgb(33, 33, 33);
+    border: 2px solid green;
+    border-radius: 25px;
+}
+
+.user-form input[type=submit]{
+    display: block;
+    width: 50%;
+    margin-top: 30px;
+}
+
+.user-form input[type=submit]:hover{
+    background-color: green;
+    color: rgb(33, 33, 33);
+}
+
+.user-form input::placeholder{
+    color: white;
+}
+
+.navbar img{
+    height: 40px;
+}
+
+.nav-item:nth-child(7){
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+@media (max-width: 992px) {
+    .nav-item:nth-child(7){
+        position: relative;
+    }
+}
