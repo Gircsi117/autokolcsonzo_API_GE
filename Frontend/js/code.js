@@ -21,38 +21,40 @@ if (!bente && !String(document.location.href).includes("login")) {
 }
 
 //Login
-document.getElementById("loginForm").onsubmit = async (event)=>{
-    event.preventDefault();
-    
-    const body = {
-        "email": document.getElementById("email").value,
-        "pass": document.getElementById("password").value
-    }
-    console.log(body);
-
-    const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body)
-    })
-    
-    if (response.status == 200) {
-        const data = await response.json();
-
-        if (data.message) {
-            console.log("Sikeres");
-            sessionStorage.setItem("login", true)
-            document.location.href = "./home.html"
+try {
+    document.getElementById("loginForm").onsubmit = async (event)=>{
+        event.preventDefault();
+        
+        const body = {
+            "email": document.getElementById("email").value,
+            "pass": document.getElementById("password").value
         }
-        else{
-            console.log("Sikertelen");
-            document.getElementById("errorMSG").innerHTML = "Hibás felhasználói adatok!"
+        console.log(body);
+    
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        })
+        
+        if (response.status == 200) {
+            const data = await response.json();
+    
+            if (data.message) {
+                console.log("Sikeres");
+                sessionStorage.setItem("login", true)
+                document.location.href = "./home.html"
+            }
+            else{
+                console.log("Sikertelen");
+                document.getElementById("errorMSG").innerHTML = "Hibás felhasználói adatok!"
+            }
+    
         }
-
     }
-}
+} catch (error) {}
 
 //logout
 async function log_out(params) {
