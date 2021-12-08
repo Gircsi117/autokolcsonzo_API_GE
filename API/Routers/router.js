@@ -7,6 +7,7 @@ const deleteControler = require("../Controllers/deleteControler");
 const updateControler = require("../Controllers/updateControler");
 
 router.get("/", getControler.home)
+router.post("/reg", getControler.reg)
 
 
 

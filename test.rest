@@ -1,2 +1,12 @@
 ###GET home
 GET http://localhost:3000 HTTP/1.1
+
+###POST reg
+POST http://localhost:3000/reg HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Bálint",
+    "pass": "mongoose",
+    "email": "balint@balint.hu"
+}
