@@ -55,7 +55,10 @@ document.getElementById("loginForm").onsubmit = async (event)=>{
 }
 
 //logout
-function log_out(params) {
-    sessionStorage.removeItem("login")
-    document.location.href = "./login.html";
+async function log_out(params) {
+    const response = await fetch("http://localhost:3000/logout")
+    if (response.status == 200) {
+        sessionStorage.removeItem("login")
+        document.location.href = "./login.html";
+    }
 }

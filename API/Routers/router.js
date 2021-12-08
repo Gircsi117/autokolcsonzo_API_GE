@@ -10,6 +10,7 @@ router.get("/", getControler.home)
 router.post("/reg", getControler.reg)
 
 router.post("/login", userControler.login)
+router.get("/logout", userControler.logout)
 
 
 
