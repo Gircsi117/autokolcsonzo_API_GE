@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const session = require("express-session");
+//const session = require("express-session");
 
-router.use(session({
-    secret:"secret",
-    resave: true,
-    saveUninitialized: true
-}))
 
 const userController = require("../Controllers/userController");
 const ugyfelController = require("../Controllers/ugyfelController");

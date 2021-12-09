@@ -18,5 +18,11 @@ Content-Type: application/json
 
 {
     "email": "erik@erik.hu",
-    "pass": "almaaa"
+    "pass": "alma"
 }
+
+###GET logout
+GET http://localhost:3000/logout HTTP/1.1
+
+###GET USER
+GET http://localhost:3000/user HTTP/1.1

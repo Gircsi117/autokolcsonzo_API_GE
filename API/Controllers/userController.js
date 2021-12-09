@@ -66,5 +66,5 @@ exports.logout = (req, res)=>{
 }
 
 exports.getuser = (req, res)=>{
-    res.status(200).json({"name": req.session.user})
+    res.status(200).json({user: req.session.user})
 }
