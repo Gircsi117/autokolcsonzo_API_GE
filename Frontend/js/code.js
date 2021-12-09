@@ -118,14 +118,15 @@ function class_valt_form(idadd, idremove, clas) {
 }
 
 //Nev betölt
-try {
 
-    async function nameAdd(params) {
-        const response = await fetch('http://localhost:3000/user')
-        console.log(response);
-        const data = await response.json();
-        console.log(data);
-    }
+async function nameAdd(params) {
+    const response = await fetch('http://localhost:3000/user')
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+}
+
+try {
     nameAdd();
 
 } catch (error) {}

@@ -15,8 +15,9 @@ exports.login = (req, res)=>{
                 req.session.user = data[0];
                 req.session.bente = true;
                 console.log(req.session.user);
+                console.log(req.sessionID);
                 console.log("Sikeres bejelentkezés");
-                res.status(200).json({message:true});
+                res.status(200).json({message:true, id: req.sessionID, query: req.query.session});
             }
             else{
                 console.log("Sikertelen bejelentkezés");
@@ -59,12 +60,13 @@ exports.reg = (req, res)=>{
 
 exports.logout = (req, res)=>{
     console.log(req.session.user);
+    console.log(req.sessionID);
     req.session.user = null;
     req.session.bente = null;
     console.log("Sikeres kijelentkezés");
-    res.status(200).json({message: true})
+    res.status(200).json({message: true, id: req.sessionID})
 }
 
 exports.getuser = (req, res)=>{
-    res.status(200).json({user: req.session.user})
+    res.status(200).json({user: req.session.user, id: req.sessionID})
 }

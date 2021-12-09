@@ -13,7 +13,10 @@ app.use(express.json())
 app.use(session({
     secret:"secret",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        name:""
+    }
 }))
 
 app.use("/", router)
