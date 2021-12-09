@@ -1,4 +1,5 @@
 const pool = require("../Models/databaseModel")
+const session = require("express-session");
 
 exports.login = (req, res)=>{
     const email = req.body.email;
