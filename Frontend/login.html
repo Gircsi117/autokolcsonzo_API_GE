@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/jquery-ui.min.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Autokölcsönzés - login</title>
@@ -16,22 +17,25 @@
             <input type="text" name="email" id="email" placeholder="Email" required>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="submit" value="Login">
-            <p>Registration</p>
+            <p onclick="class_valt_form('loginForm', 'regForm', 'd-none')">Registration</p>
         </form>
         <form action="" class="login d-none user-form col-10 col-sm-10 col-md-8 col-lg-6" id="regForm">
             <h1 class="text-light text-center">Registration</h1>
             <em id="errorMSG-reg"></em>
-            <input type="text" name="name" id="name" placeholder="name" required>
-            <input type="text" name="email" id="email" placeholder="Email" required>
-            <input type="password" name="password" id="password1" placeholder="Password" required>
-            <input type="password" name="password" id="password2" placeholder="Password again" required>
+            <input type="text" name="name" id="regName" placeholder="Name" required>
+            <input type="text" name="email" id="regEmail" placeholder="Email" required>
+            <input type="password" name="password" id="regPassword1" placeholder="Password" required>
+            <input type="password" name="password" id="regPassword2" placeholder="Password again" required>
+            <input type="password" name="key" id="key" placeholder="Key", required>
             <input type="submit" value="Registration">
-            <p>Login</p>
+            <p onclick="class_valt_form('regForm', 'loginForm', 'd-none')">Login</p>
         </form>
     </div>
     
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
     <script src="./js/bootstrap.js"></script>
-    <script src="js/code.js"></script>
+    <script src="./js/code.js"></script>
     <script>
 
     </script>

@@ -7,8 +7,9 @@ Content-Type: application/json
 
 {
     "name": "Erik",
-    "pass": "alma123",
-    "email": "erik@erik.hu"
+    "pass": "alma",
+    "email": "erik@erik.hu",
+    "key": "ZsalmA"
 }
 
 ###POST login
