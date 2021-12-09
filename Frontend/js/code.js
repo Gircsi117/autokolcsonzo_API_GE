@@ -1,6 +1,6 @@
 let bente
 
-//sessionStorage.setItem("login", true)
+sessionStorage.setItem("login", true)
 //sessionStorage.removeItem("login")
 
 try {

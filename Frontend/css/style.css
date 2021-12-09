@@ -16,7 +16,8 @@ em{
     min-height: 100vh;
 }
 
-.login input{
+.user-form input, .foglalBTN{
+    display: block;
     font-weight: bold;
     width: 100%;
     padding: 15px;
@@ -28,7 +29,7 @@ em{
     border-radius: 50px;
 }
 
-.login input[type=submit]{
+.user-form input[type=submit]{
     color: white;
     border: 2px solid greenyellow;
     display: block;
@@ -38,7 +39,7 @@ em{
     text-align: center;
 }
 
-.login p{
+.user-form p{
     font-weight: bold;
     color: white;
     border: 2px solid rgb(175, 109, 252);
@@ -53,19 +54,28 @@ em{
 
 }
 
-.login p:hover{
+.user-form p:hover{
     background-color: rgb(175, 109, 252);
     color: rgb(33, 33, 33);
 
 }
 
-.login input[type=submit]:hover{
+.user-form input[type=submit]:hover, .foglalBTN:hover{
     background-color: greenyellow;
     color: rgb(33, 33, 33);
 }
 
-.login input::placeholder{
+.user-form input::placeholder{
     color: rgba(255, 255, 255, 0.3);
+}
+
+.foglalBTN{
+    width: 90%;
+    height: 60px;
+}
+
+.home-car-form input{
+    border: 2px solid rgb(0, 255, 255);
 }
 
 .navbar img{
