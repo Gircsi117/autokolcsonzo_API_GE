@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const userControler = require("../Controllers/userControler");
-const deleteControler = require("../Controllers/deleteControler");
-const updateControler = require("../Controllers/updateControler");
+const userController = require("../Controllers/userController");
+const ugyfelController = require("../Controllers/ugyfelController");
+const carController = require("../Controllers/carController");
+const kolcsonController = require("../Controllers/kolcsonController");
 
-router.post("/login", userControler.login)
-router.post("/reg", userControler.reg)
-router.get("/logout", userControler.logout)
+router.post("/login", userController.login)
+router.post("/reg", userController.reg)
+router.get("/logout", userController.logout)
 
 
 
