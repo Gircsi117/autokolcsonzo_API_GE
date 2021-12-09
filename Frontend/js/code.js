@@ -1,6 +1,6 @@
 let bente
 
-sessionStorage.setItem("login", true)
+//sessionStorage.setItem("login", true)
 //sessionStorage.removeItem("login")
 
 try {
@@ -116,3 +116,13 @@ function class_valt_form(idadd, idremove, clas) {
     document.getElementById(idremove).classList.remove(clas);
     document.getElementById(idadd).classList.add(clas);
 }
+
+//Nev betölt
+try {
+
+    async function nameAdd(params) {
+        const response = await fetch('http://localhost:3000/user')
+    }
+    nameAdd();
+
+} catch (error) {}

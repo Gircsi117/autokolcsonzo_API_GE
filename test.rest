@@ -1,5 +1,5 @@
 ###GET home
-GET http://localhost:3000 HTTP/1.1
+GET http://localhost:3000/user HTTP/1.1
 
 ###POST reg
 POST http://localhost:3000/reg HTTP/1.1

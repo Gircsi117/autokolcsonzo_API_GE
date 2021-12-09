@@ -57,8 +57,13 @@ exports.reg = (req, res)=>{
 }
 
 exports.logout = (req, res)=>{
+    console.log(req.session.user);
     req.session.user = null;
     req.session.bente = null;
     console.log("Sikeres kijelentkezés");
     res.status(200).json({message: true})
+}
+
+exports.getuser = (req, res)=>{
+    res.status(200).json({"name": req.session.user})
 }
