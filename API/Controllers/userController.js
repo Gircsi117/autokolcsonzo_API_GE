@@ -15,7 +15,6 @@ exports.login = (req, res)=>{
                 req.session.user = data[0];
                 req.session.bente = true;
                 console.log(req.session.user);
-                console.log(req.sessionID);
                 console.log("Sikeres bejelentkezés");
                 res.status(200).json({message:true, id: req.sessionID});
             }
