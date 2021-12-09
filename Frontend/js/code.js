@@ -49,7 +49,7 @@ try {
             }
             else{
                 console.log("Sikertelen");
-                document.getElementById("errorMSG").innerHTML = "Hibás felhasználói adatok!"
+                document.getElementById("errorMSG-login").innerHTML = "Hibás felhasználói adatok!"
             }
     
         }
@@ -63,4 +63,7 @@ async function log_out(params) {
         sessionStorage.removeItem("login")
         document.location.href = "./login.html";
     }
+}
+
+function classValt() {
 }

@@ -16,7 +16,7 @@ em{
     min-height: 100vh;
 }
 
-.user-form input{
+.login input{
     font-weight: bold;
     width: 100%;
     padding: 15px;
@@ -24,23 +24,48 @@ em{
     color: white;
     font-size: 120%;
     background-color: rgb(33, 33, 33);
-    border: 2px solid green;
-    border-radius: 25px;
+    border: 2px solid greenyellow;
+    border-radius: 50px;
 }
 
-.user-form input[type=submit]{
+.login input[type=submit]{
+    color: white;
+    border: 2px solid greenyellow;
     display: block;
     width: 50%;
+    margin: 0 auto;
     margin-top: 30px;
+    text-align: center;
 }
 
-.user-form input[type=submit]:hover{
-    background-color: green;
+.login p{
+    font-weight: bold;
+    color: white;
+    border: 2px solid rgb(175, 109, 252);
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+.login p:hover{
+    background-color: rgb(175, 109, 252);
+    color: rgb(33, 33, 33);
+
+}
+
+.login input[type=submit]:hover{
+    background-color: greenyellow;
     color: rgb(33, 33, 33);
 }
 
-.user-form input::placeholder{
-    color: white;
+.login input::placeholder{
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .navbar img{
