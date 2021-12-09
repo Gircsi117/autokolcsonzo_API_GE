@@ -4,13 +4,9 @@ let bente
 //sessionStorage.removeItem("login")
 
 try {
-    bente = sessionStorage.getItem("login")
-    if (bente == null) {
-        bente = false;
-    }
-}
-catch (error) {
-    console.log(error);
+    bente = JSON.parse(sessionStorage.getItem("login")).log;
+} catch (error) {
+    bente = false;
 }
 
 console.log(bente);
@@ -44,7 +40,7 @@ try {
     
             if (data.message) {
                 console.log("Sikeres");
-                sessionStorage.setItem("login", true)
+                sessionStorage.setItem("login", JSON.stringify({log: true, id:""}))
                 document.location.href = "./home.html"
             }
             else{
@@ -127,6 +123,6 @@ async function nameAdd(params) {
 }
 
 try {
-    nameAdd();
+    //nameAdd();
 
 } catch (error) {}

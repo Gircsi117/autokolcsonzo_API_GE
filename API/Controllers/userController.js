@@ -17,7 +17,7 @@ exports.login = (req, res)=>{
                 console.log(req.session.user);
                 console.log(req.sessionID);
                 console.log("Sikeres bejelentkezés");
-                res.status(200).json({message:true, id: req.sessionID, query: req.query.session});
+                res.status(200).json({message:true, id: req.sessionID});
             }
             else{
                 console.log("Sikertelen bejelentkezés");
