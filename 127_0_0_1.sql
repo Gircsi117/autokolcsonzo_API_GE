@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Dec 04. 23:19
+-- Létrehozás ideje: 2021. Dec 10. 23:41
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 8.0.9
 
@@ -47,6 +47,13 @@ CREATE TABLE `felhasznalo` (
   `email` text COLLATE utf8_hungarian_ci NOT NULL,
   `jelszo` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `felhasznalo`
+--
+
+INSERT INTO `felhasznalo` (`Id`, `nev`, `email`, `jelszo`) VALUES
+(1, 'Erik', 'erik@erik.hu', '5f5ea3800d9a62bc5a008759dbbece9cad5db58f');
 
 -- --------------------------------------------------------
 
@@ -93,10 +100,21 @@ CREATE TABLE `kolcsonzesek` (
 
 CREATE TABLE `ugyfelek` (
   `id` int(11) NOT NULL,
-  `nev` int(11) NOT NULL,
-  `szig` int(11) NOT NULL,
+  `nev` text COLLATE utf8_hungarian_ci NOT NULL,
+  `szig` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
   `lakcim` text COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `ugyfelek`
+--
+
+INSERT INTO `ugyfelek` (`id`, `nev`, `szig`, `lakcim`) VALUES
+(3, 'Gábor', '123', 'Baja'),
+(4, 'Béla', '456', 'Szeged'),
+(5, 'Emese', '789', 'Pest'),
+(6, 'Karcsi', '147', 'Pécs'),
+(7, 'Máté', '333', 'Csávoly');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -149,7 +167,7 @@ ALTER TABLE `egyenleg`
 -- AUTO_INCREMENT a táblához `felhasznalo`
 --
 ALTER TABLE `felhasznalo`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `gepjarmuvek`
@@ -167,7 +185,7 @@ ALTER TABLE `kolcsonzesek`
 -- AUTO_INCREMENT a táblához `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Megkötések a kiírt táblákhoz
