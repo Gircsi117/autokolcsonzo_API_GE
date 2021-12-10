@@ -4,7 +4,7 @@ const router = require("./API/Routers/router");
 const session = require("express-session")
 const cors = require("cors");
 require("dotenv").config();
-const store = new session.MemoryStore();
+const store = require("./API/Models/sessionModel").store;
 
 const port = process.env.PORT || 3000;
 

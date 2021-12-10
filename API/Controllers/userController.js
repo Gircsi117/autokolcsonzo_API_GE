@@ -1,4 +1,5 @@
-const pool = require("../Models/databaseModel")
+const pool = require("../Models/databaseModel");
+const store = require("../Models/sessionModel").store;
 
 exports.login = (req, res)=>{
     const email = req.body.email;
