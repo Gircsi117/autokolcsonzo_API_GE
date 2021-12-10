@@ -10,7 +10,8 @@ const kolcsonController = require("../Controllers/kolcsonController");
 router.post("/login", userController.login)
 router.post("/reg", userController.reg)
 router.get("/logout/:id", userController.logout)
-router.get("/user/:id", ugyfelController.user);
+
+router.post("/ugyfel/:id", ugyfelController.ugyfelAdd);
 
 
 module.exports = router;

@@ -8,7 +8,10 @@ body{
 }
 
 em{
+    display: block;
+    width: 100%;
     color: red;
+    background-color: rgba(255, 166, 0);
 }
 
 .container{

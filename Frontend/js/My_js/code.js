@@ -12,7 +12,6 @@ try {
 console.log(bente);
 
 if (!bente && !String(document.location.href).includes("login")) {
-    console.log("Alma");
     document.location.href = "./login.html";
 }
 
@@ -21,6 +20,10 @@ try {
     document.getElementById("loginForm").onsubmit = async (event)=>{
         event.preventDefault();
         
+        $("#errorMSG-login").html("");
+        $("#errorMSG-login").css("padding", "0px")
+        $("#errorMSG.login").css("border", "0px solid red")
+
         const body = {
             "email": $("#email").val(),
             "pass": $("#password").val()
@@ -46,15 +49,16 @@ try {
             else{
                 console.log("Sikertelen");
                 $("#errorMSG-login").html("Hibás felhasználói adatok!")
+                $("#errorMSG-login").css("padding", "5px")
+                $("#errorMSG.login").css("border", "1px solid red")
             }
     
         }
     }
 } catch (error) {}
 
-//registration
+//Registration
 try {
-    
     document.getElementById("regForm").onsubmit = async (event)=>{
         event.preventDefault();
         
@@ -65,6 +69,9 @@ try {
         const key = $("#key").val();    
 
         $("#errorMSG-reg").html("");
+        $("#errorMSG-reg").css("padding", "0px")
+        $("#errorMSG.reg").css("border", "0px solid red")
+
         if (pass1 != pass2) {
             $("#errorMSG-reg").html("A jelszavak nem egyeznek!");
         }
@@ -91,10 +98,11 @@ try {
                 }
                 else{
                     $("#errorMSG-reg").html(data.err);
+                    $("#errorMSG-reg").css("padding", "5px")
+                    $("#errorMSG.reg").css("border", "1px solid red")
                 }
             }
         }
-
     }
 
 } catch (error) {}
@@ -118,7 +126,9 @@ function class_valt_form(idadd, idremove, clas) {
 
 //getuser
 async function getuser(params) {
+
     let id = JSON.parse(sessionStorage.getItem("login")).id
+
     const response = await fetch("http://localhost:3000/user/"+id);
     if (response.status == 200) {
         const data = await response.json()
