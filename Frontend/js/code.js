@@ -125,3 +125,22 @@ try {
     //nameAdd();
 
 } catch (error) {}
+
+//select round
+
+var valthate = true;
+
+function select_focus(id) {
+    if (valthate) {
+        document.getElementById(id).style.borderRadius = "30px 30px 0 0"
+    }
+    console.log(document.getElementById(id).style.borderRadius);
+    valthate = true;
+}
+
+function select_unfocus(id) {
+    console.log("Alma");
+    document.getElementById(id).style.borderRadius = "50px";
+    console.log(document.getElementById(id).style.borderRadius);
+    valthate = false;
+}

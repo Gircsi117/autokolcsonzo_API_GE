@@ -16,7 +16,7 @@ em{
     min-height: 100vh;
 }
 
-.user-form input, .foglalBTN{
+.user-form input, .foglalBTN, .user-form select{
     display: block;
     font-weight: bold;
     width: 100%;
@@ -86,8 +86,21 @@ em{
     background-color: rgba(0, 255, 255, 0.2);
 }
 
-.car-form input{
+.car-form input, .car-form select{
     border: 2px solid rgb(0, 255, 255);
+}
+
+.car-form select option{
+    display: inline-block;
+    padding: 150px;
+}
+
+.car-form input[type=submit]{
+    border: 2px solid rgb(0, 255, 255);
+}
+
+.car-form input[type=submit]:hover{
+    background-color: rgb(0, 255, 255);
 }
 
 .navbar img{
