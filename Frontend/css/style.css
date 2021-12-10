@@ -74,7 +74,19 @@ em{
     height: 60px;
 }
 
-.home-car-form input{
+.ugyfel-form{
+    padding: 15px;
+    border: 1px solid greenyellow;
+    background-color: rgba(173, 255, 47, 0.2);
+}
+
+.car-form{
+    padding: 15px;
+    border: 1px solid rgb(0, 255, 255);
+    background-color: rgba(0, 255, 255, 0.2);
+}
+
+.car-form input{
     border: 2px solid rgb(0, 255, 255);
 }
 

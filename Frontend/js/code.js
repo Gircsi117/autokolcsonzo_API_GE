@@ -1,6 +1,6 @@
 let bente
 
-//sessionStorage.setItem("login", true)
+//sessionStorage.setItem("login", JSON.stringify({log: true, id:""}))
 //sessionStorage.removeItem("login")
 
 try {
@@ -62,7 +62,7 @@ try {
         const email = $("#regEmail").val();
         const pass1 = $("#regPassword1").val();
         const pass2 = $("#regPassword2").val();
-        const key = $("#key").val();
+        const key = $("#key").val();    
 
         $("#errorMSG-reg").html("");
         if (pass1 != pass2) {
