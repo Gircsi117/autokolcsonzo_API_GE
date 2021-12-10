@@ -10,49 +10,48 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="menu">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="./Images/auto.png" alt="" class=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link mt-2 mt-lg-0 ps-2 rounded" href="./home.html">Főoldal</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link ps-2 rounded" href="./ugyfelek.html">Ügyfelek</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link ps-2 rounded" href="#">Járművek</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link ps-2 rounded" href="#">Kölcsönzések</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link ps-2 rounded" href="#">Pénzügyek</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link ps-2 rounded" href="./profil.html">Profil</a>
-            </li>
-            <li class="nav-item">
-              <p class="nav-link ps-2 rounded" id="logout" onclick="log_out()">Log Out</p>
-            </li>
-          </ul>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./Images/auto.png" alt="" class=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link mt-2 mt-lg-0 ps-2 rounded" href="./home.html">Főoldal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 rounded" href="./ugyfelek.html">Ügyfelek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 rounded" href="#">Járművek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 rounded" href="#">Pénzügyek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 rounded" href="./profil.html">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link ps-2 rounded" id="logout" onclick="log_out()">Log Out</p>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <div class="container d-flex flex-wrap flex-column justify-content-lg-around justify-content-start flex-lg-row p-3 mt-0 mt-sm-3">
-        <form action="" class="user-form ugyfel-form col-12 col-lg-5">
-          <h1 class="text-light text-center">Ügyfél</h1>
-          <input type="text">
-        </form>
-      <form action="" class="user-form car-form col-12 col-lg-5">
-        <h1 class="text-light text-center">Autó</h1>
-        <input type="text" name="" id="">
-      </form>
-      <input type="submit" value="Foglal" class="foglalBTN">
+    <div class="container p-3 mt-0 mt-sm-3">
+        <div class="row justify-content-around">
+            <form action="" class="user-form ugyfel-form col-12 col-lg-5">
+                <h1 class="text-light text-center">Ügyfél</h1>
+                <input type="text">
+            </form>
+            <form action="" class="user-form car-form col-12 col-lg-5 mt-3 mt-lg-0">
+                <h1 class="text-light text-center">Autó</h1>
+                <input type="text" name="" id="">
+            </form>
+        </div>
+        <input type="submit" value="Foglal" class="foglalBTN">
     </div>
     
     <script src="./js/jquery-3.6.0.min.js"></script>

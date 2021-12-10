@@ -114,7 +114,6 @@ function class_valt_form(idadd, idremove, clas) {
 }
 
 //Nev betölt
-
 async function nameAdd(params) {
     const response = await fetch('http://localhost:3000/user')
     console.log(response);

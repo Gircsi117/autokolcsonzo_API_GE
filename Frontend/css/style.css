@@ -94,14 +94,14 @@ em{
     height: 40px;
 }
 
-.nav-item:nth-child(7){
+.nav-item:nth-child(6){
     cursor: pointer;
     position: absolute;
     right: 0;
 }
 
 @media (max-width: 992px) {
-    .nav-item:nth-child(7){
+    .nav-item:nth-child(6){
         position: relative;
     }
 }
