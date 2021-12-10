@@ -22,8 +22,8 @@ try {
         event.preventDefault();
         
         const body = {
-            "email": document.getElementById("email").value,
-            "pass": document.getElementById("password").value
+            "email": $("#email").val(),
+            "pass": $("#password").val()
         }
         console.log(body);
     
