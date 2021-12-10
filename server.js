@@ -4,6 +4,7 @@ const router = require("./API/Routers/router");
 const session = require("express-session")
 const cors = require("cors");
 require("dotenv").config();
+const store = new session.MemoryStore();
 
 const port = process.env.PORT || 3000;
 
@@ -13,10 +14,8 @@ app.use(express.json())
 app.use(session({
     secret:"secret",
     resave: true,
-    saveUninitialized: true,
-    cookie: {
-        name:""
-    }
+    saveUninitialized: false,
+    store: store
 }))
 
 app.use("/", router)

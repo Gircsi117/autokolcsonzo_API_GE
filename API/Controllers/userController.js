@@ -1,5 +1,4 @@
 const pool = require("../Models/databaseModel")
-const session = require("express-session");
 
 exports.login = (req, res)=>{
     const email = req.body.email;
@@ -58,12 +57,24 @@ exports.reg = (req, res)=>{
 }
 
 exports.logout = (req, res)=>{
-    console.log(req.session.user);
-    console.log(req.sessionID);
-    req.session.user = null;
-    req.session.bente = null;
-    console.log("Sikeres kijelentkezés");
-    res.status(200).json({message: true, id: req.sessionID})
+    store.get(req.params.id, (err, sess)=>{
+        if (err) {
+            
+        }
+        else{
+            console.log(sess.user);
+            store.destroy(req.params.id, (err)=>{
+                if (err) {
+                    console.log(err);
+                }
+                else{
+                    console.log("Sikeres kijelentkezés");
+                    res.status(200).json({message: true})
+                }
+            })
+            
+        }
+    })
 }
 
 exports.getuser = (req, res)=>{

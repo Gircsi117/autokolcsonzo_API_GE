@@ -40,7 +40,7 @@ try {
     
             if (data.message) {
                 console.log("Sikeres");
-                sessionStorage.setItem("login", JSON.stringify({log: true, id:""}))
+                sessionStorage.setItem("login", JSON.stringify({log: true, id: data.id}))
                 document.location.href = "./home.html"
             }
             else{
@@ -101,7 +101,10 @@ try {
 
 //logout
 async function log_out(params) {
-    const response = await fetch("http://localhost:3000/logout")
+
+    let id = JSON.parse(sessionStorage.getItem("login")).id
+
+    const response = await fetch("http://localhost:3000/logout/"+id)
     if (response.status == 200) {
         sessionStorage.removeItem("login")
         document.location.href = "./login.html";
@@ -111,36 +114,4 @@ async function log_out(params) {
 function class_valt_form(idadd, idremove, clas) {
     document.getElementById(idremove).classList.remove(clas);
     document.getElementById(idadd).classList.add(clas);
-}
-
-//Nev betölt
-async function nameAdd(params) {
-    const response = await fetch('http://localhost:3000/user')
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
-}
-
-try {
-    //nameAdd();
-
-} catch (error) {}
-
-//select round
-
-var valthate = true;
-
-function select_focus(id) {
-    if (valthate) {
-        document.getElementById(id).style.borderRadius = "30px 30px 0 0"
-    }
-    console.log(document.getElementById(id).style.borderRadius);
-    valthate = true;
-}
-
-function select_unfocus(id) {
-    console.log("Alma");
-    document.getElementById(id).style.borderRadius = "50px";
-    console.log(document.getElementById(id).style.borderRadius);
-    valthate = false;
 }
