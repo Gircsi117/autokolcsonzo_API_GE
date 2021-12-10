@@ -77,7 +77,3 @@ exports.logout = (req, res)=>{
         }
     })
 }
-
-exports.getuser = (req, res)=>{
-    res.status(200).json({user: req.session.user, id: req.sessionID})
-}

@@ -115,3 +115,13 @@ function class_valt_form(idadd, idremove, clas) {
     document.getElementById(idremove).classList.remove(clas);
     document.getElementById(idadd).classList.add(clas);
 }
+
+//getuser
+async function getuser(params) {
+    let id = JSON.parse(sessionStorage.getItem("login")).id
+    const response = await fetch("http://localhost:3000/user/"+id);
+    if (response.status == 200) {
+        const data = await response.json()
+        console.log(data);
+    }
+}
