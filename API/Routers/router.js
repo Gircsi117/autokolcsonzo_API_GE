@@ -13,5 +13,7 @@ router.get("/logout/:id", userController.logout)
 
 router.post("/ugyfel/:id", ugyfelController.ugyfelAdd);
 
+router.post("/car/:id", carController.carAdd)
+
 
 module.exports = router;

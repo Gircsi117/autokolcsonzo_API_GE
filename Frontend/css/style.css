@@ -72,6 +72,10 @@ em{
     color: rgba(255, 255, 255, 0.3);
 }
 
+input[type="number"]{
+    
+}
+
 .foglalBTN{
     width: 90%;
     height: 60px;

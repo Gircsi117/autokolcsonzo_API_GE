@@ -35,6 +35,4 @@ document.getElementById("ugyfel-form").onsubmit = async (event)=>{
             $("#lakcim").val("")
         }
     }
-
-    
 }

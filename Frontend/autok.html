@@ -41,14 +41,24 @@
     </nav>
 
     <div class="container p-3 mt-0 mt-sm-3">
-        <form action="" class="car-form user-form col-11 col-sm-10 col-md-8 col-lg-6 d-block m-auto">
-            <input type="text" name="" id="name" placeholder="Name" required>
-            <select name="" id="tipus" onclick="" onchange="">
+        <form action="" class="car-form user-form col-11 col-sm-10 col-md-8 col-lg-6 d-block m-auto" id="car-form">
+            <h1 class="text-light text-center">Jármő felvétel</h1>
+            <em id="errorMSG"></em>
+            <input type="text" name="" id="gyarto" placeholder="Gyárto" required>
+            <select name="" id="tipus" onclick="" onchange="" class="form-select">
                 <option value="Audi">Audi</option>
                 <option value="BMW">BMW</option>
             </select>
-            <input type="text" name="" id="szig" placeholder="Személyi" required>
-            <input type="text" name="" id="lakcim" placeholder="Lakcím" required>
+            <input type="number" name="" id="km_ora" placeholder="Km óra állás" min="0" required>
+            <input type="number" name="" id="szerviz_dij" placeholder="Szervíz díj" min="0" step="50" required>
+            <input type="number" name="" id="napi_dij" placeholder="Napi díj" min="0" step="50" required>
+            <input type="number" name="" id="km_dij" placeholder="Km díj" min="0" step="50" required>
+            <input type="number" name="" id="szerviz_km" placeholder="Szervíz km" min="0" step="1" required>
+            <select name="" id="status" class="form-select">
+                <option value="0">Szabad</option>
+                <option value="1">Kiadva</option>
+                <option value="2">Szervizen</option>
+            </select>
             <input type="submit" value="Hozzáad">
         </form>
     </div>
