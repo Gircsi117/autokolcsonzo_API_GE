@@ -1,4 +1,4 @@
-const userId = "";
+let userId = '';
 
 document.getElementById("updateForm").onsubmit = async (event)=>{
     event.preventDefault();
@@ -9,21 +9,21 @@ document.getElementById("updateForm").onsubmit = async (event)=>{
     const email = $("#email").val();
     const pass1 = $("#password1").val();
     const pass2 = $("#password2").val();
-    const passNew = $("#password3").val();
+    const passOld = $("#password3").val();
 
-    $("#errorMSG").html("");
-    $("#errorMSG").css("padding", "0px")
-    $("#errorMSG").css("border", "0px solid red")
+    errorMessage("errorMSG", "", 0)
 
     if (pass1 == pass2) {
         const body = {
             id: userId,
             name: name,
             email: email,
-            pass: pass1,
-            newPass = passNew
+            newPass: pass1,
+            oldPass: passOld
         }
-    
+        
+        console.log(body);
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -36,24 +36,22 @@ document.getElementById("updateForm").onsubmit = async (event)=>{
 
         if (response.status == 200) {
             if (data.message) {
-                alert("Profil sikeresen módosítva!!")
+                $("#password1").val("");
+                $("#password2").val("");
+                $("#password3").val("");
+
+                alert(data.data)
             }
             else{
-                $("#errorMSG").html(data.data);
-                $("#errorMSG").css("padding", "5px")
-                $("#errorMSG").css("border", "1px solid red")
+                errorMessage("#errorMSG", data.data, 1)
             }
         }
         else{
-            $("#errorMSG").html(data.data);
-            $("#errorMSG").css("padding", "5px")
-            $("#errorMSG").css("border", "1px solid red")
+            errorMessage("#errorMSG", data.data, 1)
         }
     }
     else{
-        $("#errorMSG").html("A jelszavak nem egyeznek!");
-        $("#errorMSG").css("padding", "5px")
-        $("#errorMSG").css("border", "1px solid red")
+        errorMessage("#errorMSG", data.data, 1)
     }
     
 }
@@ -72,9 +70,8 @@ async function get_user_data() {
         userId = data.data.Id
     }
     else{
-        $("#errorMSG").html(data.data);
-        $("#errorMSG").css("padding", "5px")
-        $("#errorMSG").css("border", "1px solid red")
+        await errorMessage("errorMSG", data.data, 1);
+        document.getElementById("hozzaad").disabled = true
     }
 }
 

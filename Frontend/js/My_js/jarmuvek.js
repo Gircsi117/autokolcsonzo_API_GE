@@ -17,9 +17,7 @@ document.getElementById("car-form").onsubmit = async (event)=>{
 
     console.log(body);
 
-    $("#errorMSG").html("");
-    $("#errorMSG").css("padding", "0px")
-    $("#errorMSG").css("border", "0px solid red")
+    errorMessage("errorMSG", "", 0)
 
     const response = await fetch(url, {
         method: 'POST',
@@ -37,8 +35,6 @@ document.getElementById("car-form").onsubmit = async (event)=>{
         }
     }
     else{
-        $("#errorMSG").html(data.data);
-        $("#errorMSG").css("padding", "0px")
-        $("#errorMSG").css("border", "0px solid red")
+        errorMessage("errorMSG", data.data, 1)
     }
 }

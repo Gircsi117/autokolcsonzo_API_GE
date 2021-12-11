@@ -20,9 +20,7 @@ try {
     document.getElementById("loginForm").onsubmit = async (event)=>{
         event.preventDefault();
         
-        $("#errorMSG-login").html("");
-        $("#errorMSG-login").css("padding", "0px")
-        $("#errorMSG.login").css("border", "0px solid red")
+        errorMessage("errorMSG-login", "", 0)
 
         const body = {
             "email": $("#email").val(),
@@ -48,9 +46,7 @@ try {
             }
             else{
                 console.log("Sikertelen");
-                $("#errorMSG-login").html("Hibás felhasználói adatok!")
-                $("#errorMSG-login").css("padding", "5px")
-                $("#errorMSG.login").css("border", "1px solid red")
+                errorMessage("errorMSG-login", "Hibás felhasználói adatok!", 1)
             }
     
         }
@@ -68,9 +64,7 @@ try {
         const pass2 = $("#regPassword2").val();
         const key = $("#key").val();    
 
-        $("#errorMSG-reg").html("");
-        $("#errorMSG-reg").css("padding", "0px")
-        $("#errorMSG.reg").css("border", "0px solid red")
+        errorMessage("errorMSG-reg", "", 0)
 
         if (pass1 != pass2) {
             $("#errorMSG-reg").html("A jelszavak nem egyeznek!");
@@ -97,9 +91,7 @@ try {
                     class_valt_form('regForm', 'loginForm', 'd-none');
                 }
                 else{
-                    $("#errorMSG-reg").html(data.err);
-                    $("#errorMSG-reg").css("padding", "5px")
-                    $("#errorMSG.reg").css("border", "1px solid red")
+                    errorMessage("errorMSG-reg", data.err, 0)
                 }
             }
         }
@@ -134,4 +126,10 @@ async function getuser(params) {
         const data = await response.json()
         console.log(data);
     }
+}
+
+function errorMessage(id, message, number) {
+    $(`#${id}`).html(message);
+    $(`#${id}`).css("padding", `${(number*5)}px`)
+    $(`#${id}`).css("border", `${number*1}px solid red`)
 }

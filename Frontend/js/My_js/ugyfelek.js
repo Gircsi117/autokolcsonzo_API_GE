@@ -3,9 +3,7 @@ document.getElementById("ugyfel-form").onsubmit = async (event)=>{
     const id = JSON.parse(sessionStorage.getItem("login")).id;
     const url = `http://localhost:3000/ugyfel/${id}`
 
-    $("#errorMSG").html("")
-    $("#errorMSG").css("padding", "0px")
-    $("#errorMSG").css("border", "0px solid red")
+    errorMessage("errorMSG", "", 0)
 
     const body = {
         nev: $("#name").val(),
@@ -24,9 +22,7 @@ document.getElementById("ugyfel-form").onsubmit = async (event)=>{
     if (response.status == 200) {
         const data = await response.json();
         if (!data.message) {
-            $("#errorMSG").html(data.data)
-            $("#errorMSG").css("padding", "5px")
-            $("#errorMSG").css("border", "1px solid red")
+            errorMessage("errorMSG", data.data, 1)
         }
         else{
             alert(data.data)

@@ -79,7 +79,7 @@ exports.logout = (req, res)=>{
 exports.userUpdate = (req, res)=>{
     const id = req.params.id;
     store.get(id, (err, sess)=>{
-        pool.query(``, (err, data1)=>{
+        pool.query(`SELECT * FROM felhasznalo WHERE id = ${sess.user.Id} AND jelszo = SHA1('${req.body.oldPass}')`, (err, data1)=>{
             if (err) {
                 console.log(err);
                 res.status(500).json({message:false, data:"Adatbázis hiba!"})
@@ -87,6 +87,46 @@ exports.userUpdate = (req, res)=>{
             else{
                 if (data1.length == 0) {
                     res.status(500).json({message:false, data:"Az adott id és jelszó variációval nincs felhasználó"})
+                }
+                else{
+                    pool.query(`SELECT * FROM felhasznalo WHERE (jelszo = SHA1('${req.body.newPass}') OR email = '${req.body.email}') AND email != '${sess.user.email}'`, (err, data1)=>{
+                        if (err) {
+                            console.log(err);
+                            res.status(500).json({message:false, data:"Adatbázis hiba!"})
+                        }
+                        else{
+                            if (data1.length != 0) {
+                                res.status(500).json({message:false, data:"Az adott email vagy jelszó már foglat"})
+                            }
+                            else{
+                                let pass = "";
+                                if (req.body.newPass != "") {
+                                    pass = `,jelszo = SHA1('${req.body.newPass}')`;
+                                }
+                                pool.query(`UPDATE felhasznalo SET nev = '${req.body.name}', email = '${req.body.email}' ${pass} WHERE Id = ${sess.user.Id}`, (err)=>{
+                                    if (err) {
+                                        res.status(500).json({message:false, data:"Adatbázis hiba!aaaa"})
+                                    }
+                                    else{
+                                        sess.bente = true;
+                                        sess.user = {
+                                            Id: sess.user.Id,
+                                            nev: sess.user.name,
+                                            email: sess.user.email
+                                        }
+                                        store.set(id, sess, (err)=>{
+                                            if (err) {
+                                                res.status(500).json({message:false, data: "Sesion error"})
+                                            }
+                                            else{
+                                                res.status(200).json({message:true, data:"Adatok sikeresen frissítve!"})
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        }
+                    })
                 }
             }
         })
