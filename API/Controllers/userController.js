@@ -63,7 +63,6 @@ exports.logout = (req, res)=>{
             
         }
         else{
-            console.log(sess.user);
             store.destroy(req.params.id, (err)=>{
                 if (err) {
                     console.log(err);
@@ -73,6 +72,40 @@ exports.logout = (req, res)=>{
                     res.status(200).json({message: true})
                 }
             })
+        }
+    })
+}
+
+exports.userUpdate = (req, res)=>{
+    const id = req.params.id;
+    store.get(id, (err, sess)=>{
+        pool.query(``, (err, data1)=>{
+            if (err) {
+                console.log(err);
+                res.status(500).json({message:false, data:"Adatbázis hiba!"})
+            }
+            else{
+                if (data1.length == 0) {
+                    res.status(500).json({message:false, data:"Az adott id és jelszó variációval nincs felhasználó"})
+                }
+            }
+        })
+    })
+}
+
+exports.userGet = (req, res)=>{
+    const id = req.params.id
+    store.get(id, (err, sess)=>{
+        if (err) {
+            console.log(err);
+            res.status(500).json({message:false, data: "Sesion error"})
+        }
+        else{
+            try {
+                res.status(200).json({message:true, data:sess.user})
+            } catch (error) {
+                res.status(500).json({message:false, data: "Sesion error"})
+            }
             
         }
     })
