@@ -42,16 +42,23 @@
 
     <div class="container p-3 mt-0 mt-sm-3">
         <div class="row justify-content-around">
-            <form action="" class="user-form ugyfel-form col-12 col-lg-5">
-                <h1 class="text-light text-center">Ügyfél</h1>
-                <input type="text">
-            </form>
-            <form action="" class="user-form car-form col-12 col-lg-5 mt-3 mt-lg-0">
-                <h1 class="text-light text-center">Autó</h1>
-                <input type="text" name="" id="">
-            </form>
+            <div class="col-12 col-lg-5">
+                <form action="" class="user-form ugyfel-form">
+                    <h1 class="text-light text-center">Foglalás</h1>
+                    <input type="text">
+                    <input type="submit" value="Foglal" class="foglalBTN">
+                </form>
+            </div>
+            
+            <div class="col-12 col-lg-5">
+                <form action="" class="user-form car-form mt-3 mt-lg-0">
+                    <h1 class="text-light text-center">Visszahozás</h1>
+                    <input type="text" name="" id="">
+                    <input type="submit" value="Fizet" class="fizetBTN">
+                </form>
+            </div>
+            
         </div>
-        <input type="submit" value="Foglal" class="foglalBTN" onclick="getuser()">
     </div>
     
     <script src="./js/jquery-3.6.0.min.js"></script>
