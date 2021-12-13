@@ -40,20 +40,65 @@
         </div>
     </nav>
 
-    <div class="container p-3 mt-0 mt-sm-3">
+    <div class="container p-4 mt-0 mt-sm-3">
         <div class="row justify-content-around">
-            <div class="col-12 col-lg-5">
-                <form action="" class="user-form ugyfel-form">
+            <div class="col-12 col-lg-6 p-4 ugyfel-form">
+                <form action="" class="user-form">
                     <h1 class="text-light text-center">Foglalás</h1>
-                    <input type="text">
-                    <input type="submit" value="Foglal" class="foglalBTN">
+                    <h2 class="text-center text-light">Ügyfél kiválasztás</h2>
+                    <input type="text" name="" id="szemFoglal" placeholder="Személyi szám" required>
+                    <input type="submit" value="Kiválaszt" class="kivalasztBTN">
                 </form>
+                <form action="" class="user-form">
+                    <h2 class="text-center text-light mt-4">Autó kiválasztás</h2>
+                    <div class="autok">
+                        <div class="table-head row d-none d-md-flex">
+                            <div class="col-3">ID</div>
+                            <div class="col-3">Gyartó</div>
+                            <div class="col-3">Típus</div>
+                            <div class="col-3">Select</div>
+                        </div>
+                        <div class="row table-item">
+                            <div class="col-6 d-flex d-md-none">ID</div>
+                            <div class="col-3">1</div>
+                            <div class="col-6 d-flex d-md-none">Gyarto</div>
+                            <div class="col-3 ">Jani</div>
+                            <div class="col-6 d-flex d-md-none">Tipus</div>
+                            <div class="col-3">Audi</div>
+                            
+                            <div class="text-center col-12 col-md-3">Kiválaszt</div>
+                        </div>
+                        <div class="row table-item">
+                            <div class="col-6 d-flex d-md-none">ID</div>
+                            <div class="col-3">1</div>
+                            <div class="col-6 d-flex d-md-none">Gyarto</div>
+                            <div class="col-3 ">Jani</div>
+                            <div class="col-6 d-flex d-md-none">Tipus</div>
+                            <div class="col-3">Audi</div>
+                            
+                            <div class="text-center col-12 col-md-3">Kiválaszt</div>
+                        </div>
+                        <div class="row table-item">
+                            <div class="col-6 d-flex d-md-none">ID</div>
+                            <div class="col-3">1</div>
+                            <div class="col-6 d-flex d-md-none">Gyarto</div>
+                            <div class="col-3 ">Jani</div>
+                            <div class="col-6 d-flex d-md-none">Tipus</div>
+                            <div class="col-3">Audi</div>
+                            
+                            <div class="text-center col-12 col-md-3" onclick="">Kiválaszt</div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Kiválaszt" class="kivalasztBTN">
+                </form>
+                <hr>
+                <input type="submit" value="Foglalás" class="foglalBTN">
             </div>
             
-            <div class="col-12 col-lg-5">
-                <form action="" class="user-form car-form mt-3 mt-lg-0">
+            <div class="col-12 col-lg-6 p-4 car-form">
+                <form action="" class="user-form">
                     <h1 class="text-light text-center">Visszahozás</h1>
-                    <input type="text" name="" id="">
+                    <input type="text" name="" id="" placeholder="Autó azonosító" required>
                     <input type="submit" value="Fizet" class="fizetBTN">
                 </form>
             </div>
