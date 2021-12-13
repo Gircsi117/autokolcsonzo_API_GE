@@ -86,7 +86,7 @@ try {
             if (response.status == 200) {
                 const data = await response.json();
                 console.log(data);
-                if (data.message == true) {
+                if (data.message) {
                     alert("Sikeres regisztráció!")
                     class_valt_form('regForm', 'loginForm', 'd-none');
                 }
