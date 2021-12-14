@@ -157,12 +157,19 @@ hr{
 .table-item div{
     display: flex;
     align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 5px 0px 5px 10px;
+}
+
+.table-item div:last-child{
+    justify-content: center;
 }
 
 .pagination{
     text-align: center;
     font-weight: bold;
 }
+
 
 .pagination li p{
     cursor: pointer;

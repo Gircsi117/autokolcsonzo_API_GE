@@ -26,3 +26,57 @@ exports.carAdd = (req, res)=>{
         }
     })
 }
+
+exports.autoSzam = (req, res)=>{
+    store.get(req.params.id, (err, sess)=>{
+        if (err) {
+            res.status(500).json({message: false, data: "Session error"});
+        }
+        else{
+            try {
+                console.log(sess.bente);
+                if (sess.bente) {
+                    pool.query(`SELECT COUNT(id) as "szam" FROM gepjarmuvek`, (err, data1)=>{
+                        if (err) {
+                            res.status(500).json({message: false, data: "Adatbázis error"});
+                        }
+                        else{
+                            console.log(data1[0].szam);
+                            res.status(200).json({message: true, data: data1[0].szam});
+                        }
+                    })
+                }
+            } catch (error) {
+                res.status(500).json({message: false, data: "logout"})
+            }
+            
+        }
+    })
+}
+
+exports.autok = (req, res)=>{
+    store.get(req.params.id, (err, sess)=>{
+        if (err) {
+            res.status(500).json({message: false, data: "Session error"});
+        }
+        else{
+            try {
+                console.log(sess.bente);
+                if (sess.bente) {
+                    pool.query(`SELECT * FROM gepjarmuvek WHERE 1`, (err, data1)=>{
+                        if (err) {
+                            res.status(500).json({message: false, data: "Adatbázis error"});
+                        }
+                        else{
+                            console.log(data1);
+                            res.status(200).json({message: true, data: data1});
+                        }
+                    })
+                }
+            } catch (error) {
+                res.status(500).json({message: false, data: "logout"})
+            }
+            
+        }
+    })
+}

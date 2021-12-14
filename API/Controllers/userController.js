@@ -4,7 +4,6 @@ const store = require("../Models/sessionModel").store;
 exports.login = (req, res)=>{
     const email = req.body.email;
     const pass = req.body.pass;
-
     pool.query(`SELECT * FROM felhasznalo WHERE email = '${email}' AND jelszo = SHA1('${pass}');`, (err, data)=>{
         if (err) {
             console.log(err);
