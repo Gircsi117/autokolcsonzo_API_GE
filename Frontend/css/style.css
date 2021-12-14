@@ -42,7 +42,7 @@ em{
     text-align: center;
 }
 
-.user-form p{
+.user-form .redirect{
     font-weight: bold;
     color: white;
     border: 2px solid rgb(175, 109, 252);
@@ -57,7 +57,7 @@ em{
 
 }
 
-.user-form p:hover{
+.user-form .redirect:hover{
     background-color: rgb(175, 109, 252);
     color: rgb(33, 33, 33);
 
@@ -151,6 +151,30 @@ hr{
 .table-item div:last-child{
     cursor: pointer;
     font-weight: bold;
+    
+}
+
+.table-item div{
+    display: flex;
+    align-items: center;
+}
+
+.pagination{
+    text-align: center;
+    font-weight: bold;
+}
+
+.pagination li p{
+    cursor: pointer;
+    background-color: rgb(33, 33, 33);
+    border: 1px solid greenyellow;
+    color: white;
+}
+
+.pagination li p:hover{
+    border: 1px solid greenyellow;
+    background-color: greenyellow;
+    color: rgb(33, 33, 33);
 }
 
 @media (max-width: 992px) {
@@ -159,7 +183,7 @@ hr{
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .table-item{
         margin-bottom: 15px;
     }
