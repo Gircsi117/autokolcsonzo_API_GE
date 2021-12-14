@@ -1,4 +1,5 @@
 var db = 0;
+var autok;
 
 async function db_szam(params) {
     const id = JSON.parse(sessionStorage.getItem("login")).id;
@@ -27,7 +28,7 @@ async function autok_leker(tol) {
 
         if (response.status == 200) {
             
-            console.log(data.data);
+            autok = data.data
 
             document.getElementById("previousBTN").innerHTML = `<p class="page-link" onclick="autok_leker(${tol-1})">Previous (${tol})</p>`
             document.getElementById("nextBTN").innerHTML = `<p class="page-link" onclick="autok_leker(${tol+1})">Next (${tol+2})</p>`

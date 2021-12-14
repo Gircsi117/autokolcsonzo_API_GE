@@ -164,6 +164,7 @@ hr{
 .table-item div:last-child{
     padding: 5px 0px 5px 0px;
     justify-content: center;
+    border: 1px solid gray;
 }
 
 .pagination{
