@@ -63,13 +63,14 @@ exports.autok = (req, res)=>{
             try {
                 console.log(sess.bente);
                 if (sess.bente) {
-                    pool.query(`SELECT * FROM gepjarmuvek WHERE 1`, (err, data1)=>{
+                    const tol = req.query.tol;
+                    pool.query(`SELECT * FROM gepjarmuvek WHERE status = 0 LIMIT 5 OFFSET ${tol*5};`, (err, data1)=>{
                         if (err) {
                             res.status(500).json({message: false, data: "Adatbázis error"});
                         }
                         else{
                             console.log(data1);
-                            res.status(200).json({message: true, data: data1});
+                            res.status(200).json({message: true, data: data1, tol:tol});
                         }
                     })
                 }

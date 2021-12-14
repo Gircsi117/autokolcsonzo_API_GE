@@ -51,7 +51,7 @@
                 </form>
                 <form action="" class="user-form">
                     <h2 class="text-center text-light mt-4">Autó kiválasztás</h2>
-                    <div class="autok">
+                    <div class="autok" id="autok">
                         <div class="table-head row d-none d-md-flex">
                             <div class="col-3">ID</div>
                             <div class="col-3">Gyartó</div>
@@ -112,9 +112,9 @@
 
                     <nav aria-label="Page navigation example" style="margin-top: 15px;">
                         <ul class="pagination">
-                            <li class="page-item col-4"><p class="page-link" href="#">Previous</p></li>
-                            <li class="page-item col-4"><p class="page-link" href="#">Home</p></li>
-                            <li class="page-item col-4"><p class="page-link" href="#">Next</p></li>
+                            <li class="page-item col-4" id="previousBTN"><p class="page-link">Previous</p></li>
+                            <li class="page-item col-4"><p class="page-link" onclick="autok_leker(0)">Home</p></li>
+                            <li class="page-item col-4" id="nextBTN"><p class="page-link" onclick="">Next</p></li>
                         </ul>
                     </nav>
                 </form>
