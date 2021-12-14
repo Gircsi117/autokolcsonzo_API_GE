@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Dec 10. 23:41
+-- Létrehozás ideje: 2021. Dec 14. 20:23
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 8.0.9
 
@@ -53,7 +53,8 @@ CREATE TABLE `felhasznalo` (
 --
 
 INSERT INTO `felhasznalo` (`Id`, `nev`, `email`, `jelszo`) VALUES
-(1, 'Erik', 'erik@erik.hu', '5f5ea3800d9a62bc5a008759dbbece9cad5db58f');
+(1, 'Erik', 'erik@erik.hu', '5f5ea3800d9a62bc5a008759dbbece9cad5db58f'),
+(2, 'András', 'andras@andras.hu', '08a2fc565a1389a511ab9206b9a1e6b4b433486a');
 
 -- --------------------------------------------------------
 
@@ -65,13 +66,27 @@ CREATE TABLE `gepjarmuvek` (
   `id` int(11) NOT NULL,
   `gyarto` text COLLATE utf8_hungarian_ci NOT NULL,
   `tipus` text COLLATE utf8_hungarian_ci NOT NULL,
-  `kmoraallas` double NOT NULL,
+  `km_ora` double NOT NULL,
   `szerviz_dij` int(11) NOT NULL,
   `napi_dij` int(11) NOT NULL,
-  `kmdij` int(11) NOT NULL,
-  `szerviz_km` int(11) NOT NULL,
+  `km_dij` int(11) NOT NULL,
+  `szerviz_km` double NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `gepjarmuvek`
+--
+
+INSERT INTO `gepjarmuvek` (`id`, `gyarto`, `tipus`, `km_ora`, `szerviz_dij`, `napi_dij`, `km_dij`, `szerviz_km`, `status`) VALUES
+(1, 'Alma.kft', 'Audi', 1500, 20000, 1500, 500, 1500, 0),
+(2, 'Merci', 'Audi', 2500, 3000, 3100, 700, 3000, 0),
+(3, 'Sanyi kft', 'BMW', 2780, 2800, 600, 600, 8700, 0),
+(4, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
+(5, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
+(6, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
+(7, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
+(8, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0);
 
 -- --------------------------------------------------------
 
@@ -114,7 +129,8 @@ INSERT INTO `ugyfelek` (`id`, `nev`, `szig`, `lakcim`) VALUES
 (4, 'Béla', '456', 'Szeged'),
 (5, 'Emese', '789', 'Pest'),
 (6, 'Karcsi', '147', 'Pécs'),
-(7, 'Máté', '333', 'Csávoly');
+(7, 'Máté', '333', 'Csávoly'),
+(8, 'Nóra', '888', 'Kecskemét');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -167,13 +183,13 @@ ALTER TABLE `egyenleg`
 -- AUTO_INCREMENT a táblához `felhasznalo`
 --
 ALTER TABLE `felhasznalo`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `gepjarmuvek`
 --
 ALTER TABLE `gepjarmuvek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT a táblához `kolcsonzesek`
@@ -185,7 +201,7 @@ ALTER TABLE `kolcsonzesek`
 -- AUTO_INCREMENT a táblához `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Megkötések a kiírt táblákhoz
