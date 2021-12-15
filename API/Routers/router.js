@@ -15,9 +15,11 @@ router.get("/user/:id", userController.userGet)
 
 router.post("/ugyfel/:id", ugyfelController.ugyfelAdd);
 
-router.post("/car/:id", carController.carAdd)
-router.get("/autoszam/:id", carController.autoSzam)
-router.get("/autok/:id", carController.autok)
+router.post("/car/:id", carController.carAdd);
+router.get("/autoszam/:id", carController.autoSzam);
+router.get("/autok/:id", carController.autok);
+
+
 
 
 module.exports = router;
