@@ -1,5 +1,6 @@
 var db = 0;
 var autok;
+var selected;
 
 async function db_szam(params) {
     const id = JSON.parse(sessionStorage.getItem("login")).id;
@@ -62,5 +63,29 @@ async function autok_leker(tol) {
 }
 
 function kivalaszt(szam) {
-    console.log(autok[szam]);
+    selected = autok[szam]
+    var html = `<table>
+        <tr>
+            <td>Km óra</td>
+            <td>${selected.km_ora} km</td>
+        </tr>
+        <tr>
+            <td>Szervíz díj</td>
+            <td>${selected.szerviz_dij} Ft</td>
+        </tr>
+        <tr>
+            <td>Napi díj</td>
+            <td>${selected.napi_dij} Ft</td>
+        </tr>
+        <tr>
+            <td>Km díj</td>
+            <td>${selected.km_dij} Ft</td>
+        </tr>
+        <tr>
+            <td>Szervíz</td>
+            <td>${selected.szerviz_km} Km</td>
+        </tr>
+    </table>`;
+
+    $("#kivalasztTABLA").html(html)
 }

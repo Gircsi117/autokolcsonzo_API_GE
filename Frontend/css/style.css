@@ -139,13 +139,21 @@ hr{
     border-collapse: collapse;
 }
 
-.table-item{
+#kivalasztTABLA table{
+    border: 1px solid greenyellow;
+    width: 100%;
+}
+
+#kivalasztTABLA td{
+    padding: 5px;
+}
+
+.table-item, #kivalasztTABLA tr{
     background-color: rgb(33, 33, 33);
 }
 
-.table-item:nth-child(2n){
+.table-item:nth-child(2n), #kivalasztTABLA tr:nth-child(2n){
     background-color: rgb(45, 45, 45);
-    font-weight: bold;
 }
 
 .table-item div:last-child{
