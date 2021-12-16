@@ -2,6 +2,7 @@ var db = 0;
 var autok;
 var selected;
 
+
 async function db_szam(params) {
     const id = JSON.parse(sessionStorage.getItem("login")).id;
     const response = await fetch(`http://localhost:3000/autoszam/${id}`);
