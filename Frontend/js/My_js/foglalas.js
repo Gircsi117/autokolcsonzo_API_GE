@@ -90,3 +90,40 @@ function kivalaszt(szam) {
 
     $("#kivalasztTABLA").html(html)
 }
+
+document.getElementById("newKolcson").onsubmit = async (event)=>{
+    event.preventDefault();
+    errorMessage("foglalErrorMSG", "", 0)
+
+    const id = JSON.parse(sessionStorage.getItem("login")).id;
+    const url = `http://localhost:3000/newKolcson/${id}`;
+
+    if (selected == null) {
+        errorMessage("foglalErrorMSG", "Nincs kiválasztott autó", 1)
+    }
+    else{
+        const body = {
+            szemSzam: $("#szemFoglal").val(),
+            carId: selected.id
+        }
+    
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        })
+
+        const data = await response.json();
+
+        if (response.status != 200) {
+            errorMessage("foglalErrorMSG", data.data, 1);
+            autok_leker(0);
+        }
+        else{
+            alert(data.data)
+            autok_leker(0);
+        }
+    }
+}

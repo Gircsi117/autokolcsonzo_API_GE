@@ -43,14 +43,11 @@
     <div class="container p-4 mt-0 mt-sm-3">
         <div class="row justify-content-around">
             <div class="col-12 col-lg-6 p-4 ugyfel-form">
-                <form action="" class="user-form">
+                <form action="" class="user-form" id="newKolcson">
                     <h1 class="text-light text-center">Foglalás</h1>
-
-                    <h2 class="text-center text-light">Ügyfél kiválasztás</h2>
+                    <em id="foglalErrorMSG"></em>
+                    <h2 class="text-center text-light pt-2">Ügyfél kiválasztás</h2>
                     <input type="text" name="" id="szemFoglal" placeholder="Személyi szám" required>
-                </form>
-
-                <form action="" class="user-form">
                     <h2 class="text-center text-light mt-4">Autó kiválasztás</h2>
                     <div class="autok" id="autok">
                         <div class="table-head row d-none d-md-flex">
@@ -118,13 +115,13 @@
                             <li class="page-item col-4" id="nextBTN"><p class="page-link" onclick="">Next</p></li>
                         </ul>
                     </nav>
+                    <hr>
+                    <div id="kivalasztTABLA" class="text-light">
+                        
+                    </div>
+                    <hr>
+                    <input type="submit" value="Foglalás" class="foglalBTN" id="foglalBTN">
                 </form>
-                <hr>
-                <div id="kivalasztTABLA" class="text-light">
-                    
-                </div>
-                <hr>
-                <input type="submit" value="Foglalás" class="foglalBTN" id="foglalBTN">
             </div>
             
             <div class="col-12 col-lg-6 p-4 car-form">

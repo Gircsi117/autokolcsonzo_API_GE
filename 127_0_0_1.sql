@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Dec 14. 20:23
--- Kiszolgáló verziója: 10.4.20-MariaDB
--- PHP verzió: 8.0.9
+-- Létrehozás ideje: 2021. Dec 17. 11:53
+-- Kiszolgáló verziója: 10.4.6-MariaDB
+-- PHP verzió: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -82,7 +82,7 @@ INSERT INTO `gepjarmuvek` (`id`, `gyarto`, `tipus`, `km_ora`, `szerviz_dij`, `na
 (1, 'Alma.kft', 'Audi', 1500, 20000, 1500, 500, 1500, 0),
 (2, 'Merci', 'Audi', 2500, 3000, 3100, 700, 3000, 0),
 (3, 'Sanyi kft', 'BMW', 2780, 2800, 600, 600, 8700, 0),
-(4, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
+(4, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 1),
 (5, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
 (6, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
 (7, 'Sanyi', 'Audi', 7800, 5000, 550, 750, 9900, 0),
@@ -99,13 +99,20 @@ CREATE TABLE `kolcsonzesek` (
   `ugyfel_id` int(11) NOT NULL,
   `gepjarmu_id` int(11) NOT NULL,
   `felhaszn_id` int(11) NOT NULL,
-  `kiad_datum` datetime NOT NULL,
-  `visszahoz_datum` datetime DEFAULT NULL,
+  `kiad_datum` date NOT NULL,
+  `visszahoz_datum` date DEFAULT NULL,
   `km_ora_kezd` double NOT NULL,
   `km_ora_veg` double DEFAULT NULL,
   `napszam` int(11) DEFAULT NULL,
-  `ossz_km` double NOT NULL
+  `ossz_km` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `kolcsonzesek`
+--
+
+INSERT INTO `kolcsonzesek` (`id`, `ugyfel_id`, `gepjarmu_id`, `felhaszn_id`, `kiad_datum`, `visszahoz_datum`, `km_ora_kezd`, `km_ora_veg`, `napszam`, `ossz_km`) VALUES
+(3, 8, 4, 1, '2021-12-17', NULL, 7800, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -195,7 +202,7 @@ ALTER TABLE `gepjarmuvek`
 -- AUTO_INCREMENT a táblához `kolcsonzesek`
 --
 ALTER TABLE `kolcsonzesek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `ugyfelek`
