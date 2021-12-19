@@ -1,7 +1,9 @@
-var db = 0;
+var szabad_db = 0;
+var foglal_db = 0;
 var autok;
+var foglaltak;
 var selected;
-
+var foglalt_selected;
 
 async function db_szam(params) {
     const id = JSON.parse(sessionStorage.getItem("login")).id;
@@ -10,7 +12,7 @@ async function db_szam(params) {
     const data = await response.json()
 
     if (response.status == 200) {
-        db = data.data
+        szabad_db= data.data
         autok_leker(0)
     }
     else{
@@ -18,12 +20,27 @@ async function db_szam(params) {
             log_out();
         }
     }
+
+    const response2 = await fetch(`http://localhost:3000/foglalszam/${id}`);
+
+    const data2 = await response2.json()
+
+    if (response2.status == 200) {
+        foglal_db= data2.data
+        fizetendo_leker(0);
+    }
+    else{
+        if (data2.data == "logout") {
+            log_out();
+        }
+    }
+
 }
 db_szam();
 
 //Autók lekérése
 async function autok_leker(tol) {
-    if (tol >= 0 && tol < Math.ceil(db / 5)) {
+    if (tol >= 0 && tol < Math.ceil(szabad_db / 5)) {
         const id = JSON.parse(sessionStorage.getItem("login")).id;
         const response = await fetch(`http://localhost:3000/autok/${id}?tol=${tol}`);
 
@@ -45,7 +62,7 @@ async function autok_leker(tol) {
 
             let k = 0;
 
-            data.data.forEach(auto => {
+            autok.forEach(auto => {
                 html += `<div class="row table-item">
                 <div class="col-6 d-flex d-md-none">Km óra</div>
                 <div class="col-6 col-md-3">${auto.km_ora}</div>
@@ -124,6 +141,142 @@ document.getElementById("newKolcson").onsubmit = async (event)=>{
         else{
             alert(data.data)
             autok_leker(0);
+            fizetendo_leker(0);
         }
+    }
+}
+
+async function fizetendo_leker(tol) {
+    if (tol >= 0 && tol < Math.ceil(foglal_db / 5)) {
+        const id = JSON.parse(sessionStorage.getItem("login")).id;
+        const response = await fetch(`http://localhost:3000/autok_foglal/${id}?tol=${tol}`);
+
+        const data = await response.json();
+        console.log(data);
+
+        if (response.status == 200) {
+            
+            foglaltak = data.data
+
+            document.getElementById("FpreviousBTN").innerHTML = `<p class="page-link" onclick="fizetendo_leker(${tol-1})">Previous (${tol})</p>`
+            document.getElementById("FnextBTN").innerHTML = `<p class="page-link" onclick="fizetendo_leker(${tol+1})">Next (${tol+2})</p>`
+
+            var html = `<div class="table-head row d-none d-md-flex">
+                <div class="col-3">Ügyfél</div>
+                <div class="col-3">Kiadás</div>
+                <div class="col-3">Típus</div>
+                <div class="col-3">Select</div>
+            </div>`
+
+            let k = 0;
+
+            foglaltak.forEach(auto => {
+                //console.log(auto.kiad_datum);
+                var datum = new Date(auto.kiad_datum)
+                //console.log(datum);
+                //console.log((new Date() - datum) / 86400000);
+                var shortDate = `${datum.getFullYear()}-${datum.getMonth()+1}-${datum.getDate()}`
+                html += `<div class="row table-item">
+                <div class="col-6 d-flex d-md-none">Ügyfél</div>
+                <div class="col-6 col-md-3">${auto.szig}</div>
+                <div class="col-6 d-flex d-md-none">Kiadás</div>
+                <div class="col-6 col-md-3 ">${shortDate}</div>
+                <div class="col-6 d-flex d-md-none">Tipus</div>
+                <div class="col-6 col-md-3">${auto.tipus}</div>
+                <div class="text-center col-12 col-md-3" onclick="foglal_kivalaszt(${k})">Kiválaszt</div>
+                </div>`;
+                k++
+                console.log("");
+            });
+
+            $("#fizetAutok").html(html);
+        }
+    }
+}
+
+function foglal_kivalaszt(szam) {
+    var osszeg = 0;
+    foglalt_selected = foglaltak[szam];
+    var datum = new Date(foglalt_selected.kiad_datum)
+    var shortDate = `${datum.getFullYear()}-${datum.getMonth()+1}-${datum.getDate()}`
+    var html = `<table>
+        <tr>
+            <td>Km óra</td>
+            <td>${foglalt_selected.km_ora} km</td>
+        </tr>
+        <tr>
+            <td>Megtett km</td>
+            <td id="megtett"> km</td>
+        </tr>
+        <tr>
+            <td>Megtett km összeg</td>
+            <td id="megtett_ossz"> </td>
+        </tr>
+        <tr>
+            <td>Szervíz díj</td>
+            <td>${foglalt_selected.szerviz_dij} Ft</td>
+        </tr>
+        <tr>
+            <td>Napi díj</td>
+            <td>${foglalt_selected.napi_dij} Ft</td>
+        </tr>
+        <tr>
+            <td>Kint töltött napok</td>
+            <td>${Math.ceil((new Date - datum) / 86400000) }</td>
+        </tr>
+        <tr>
+            <td>Nap összeg</td>
+            <td id="napi">${Math.ceil((new Date - datum) / 86400000) * foglalt_selected.napi_dij}</td>
+        </tr>
+        <tr>
+            <td>Km díj</td>
+            <td>${foglalt_selected.km_dij} Ft</td>
+        </tr>
+        <tr>
+            <td>Szervíz km</td>
+            <td>${foglalt_selected.szerviz_km} Km</td>
+        </tr>
+        <tr>
+            <td>Kiadás</td>
+            <td>${shortDate}</td>
+        </tr>
+        <tr>
+            <td>Össz</td>
+            <td id="ossz"></td>
+        </tr>
+    </table>`;
+
+    //$("#megtettKm").val(150)
+    $("#foglaltKivalasztTABLA").html(html)
+    szamol();
+}
+
+document.getElementById("megtettKm").addEventListener("keyup", (event)=>{
+    if (foglalt_selected != null) {
+        szamol();
+    }
+})
+
+document.getElementById("megtettKm").addEventListener("change", (event)=>{
+    if (foglalt_selected != null) {
+        szamol();
+    }
+})
+
+async function szamol(params) {
+    errorMessage("errorMSG", "", 0);
+
+    var megtett = Number($("#megtettKm").val()) - Number(foglalt_selected.km_ora)
+    $("#megtett").html(`${megtett} km`);
+
+    var napi = Number($("#napi").html());
+    var fizet = megtett * Number(foglalt_selected.km_dij)
+
+    $("#megtett_ossz").html(fizet)
+    $("#ossz").html(napi + fizet)
+
+    if (foglalt_selected.szerviz_km + megtett >= 10000) {
+        errorMessage("errorMSG", "Szervízbe küldendő!", 1)
+        $("#ossz").html(napi + fizet + foglalt_selected.szerviz_dij)
     }
 }

@@ -116,7 +116,7 @@
                         </ul>
                     </nav>
                     <hr>
-                    <div id="kivalasztTABLA" class="text-light">
+                    <div id="kivalasztTABLA" class="text-light kivalasztTABLA">
                         
                     </div>
                     <hr>
@@ -127,7 +127,28 @@
             <div class="col-12 col-lg-6 p-4 car-form">
                 <form action="" class="user-form">
                     <h1 class="text-light text-center">Visszahozás</h1>
-                    <input type="text" name="" id="" placeholder="Autó azonosító" required>
+                    <em id="errorMSG" class="mt-3 mb-3"></em>
+                    <div class="autok fizetAutok" id="fizetAutok">
+                        <div class="table-head row d-none d-md-flex">
+                            <div class="col-3">Ügyfél</div>
+                            <div class="col-3">Dátum</div>
+                            <div class="col-3">Típus</div>
+                            <div class="col-3">Select</div>
+                        </div>
+                    </div>
+                    <nav aria-label="Page navigation example" style="margin-top: 15px;">
+                        <ul class="pagination">
+                            <li class="page-item col-4" id="FpreviousBTN"><p class="page-link">Previous</p></li>
+                            <li class="page-item col-4"><p class="page-link" onclick="fizetendo_leker(0)">Home</p></li>
+                            <li class="page-item col-4" id="FnextBTN"><p class="page-link" onclick="">Next</p></li>
+                        </ul>
+                    </nav>
+                    <hr>
+                    <div id="foglaltKivalasztTABLA" class="text-light kivalasztTABLA">
+                        
+                    </div>
+                    <hr>
+                    <input type="number" name="" id="megtettKm" min="0" placeholder="Km óra állása" required>
                     <input type="submit" value="Fizet" class="fizetBTN">
                 </form>
             </div>

@@ -139,20 +139,24 @@ hr{
     border-collapse: collapse;
 }
 
-#kivalasztTABLA table{
+.kivalasztTABLA table{
     border: 1px solid greenyellow;
     width: 100%;
 }
 
-#kivalasztTABLA td{
+.car-form .kivalasztTABLA table{
+    border: 1px solid rgb(0, 255, 255);
+}
+
+.kivalasztTABLA td{
     padding: 5px;
 }
 
-.table-item, #kivalasztTABLA tr{
+.table-item, .kivalasztTABLA tr{
     background-color: rgb(33, 33, 33);
 }
 
-.table-item:nth-child(2n), #kivalasztTABLA tr:nth-child(2n){
+.table-item:nth-child(2n), .kivalasztTABLA tr:nth-child(2n){
     background-color: rgb(45, 45, 45);
 }
 
@@ -194,6 +198,23 @@ hr{
     color: rgb(33, 33, 33);
 }
 
+.car-form .table-item div:last-child:hover{
+    background-color: rgb(0, 255, 255);
+}
+
+.fizetAutok .table-head div{
+    border: 1px solid rgb(0, 255, 255)
+}
+
+.car-form .page-link{
+    border: 1px solid rgb(0, 255, 255)
+}
+
+.car-form .page-link:hover{
+    border: 1px solid rgb(0, 255, 255);
+    background-color: rgb(0, 255, 255);
+}
+
 @media (max-width: 992px) {
     .nav-item:nth-child(6){
         position: relative;
@@ -207,6 +228,10 @@ hr{
 
     .table-item div:last-child{
         border: 1px solid greenyellow;
+    }
+
+    .car-form .table-item div:last-child{
+        border: 1px solid rgb(0, 255, 255);
     }
 }
 
