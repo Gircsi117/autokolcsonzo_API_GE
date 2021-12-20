@@ -109,31 +109,3 @@ exports.autok = (req, res)=>{
         }
     })
 }
-
-exports.autok_foglal = (req, res)=>{
-    store.get(req.params.id, (err, sess)=>{
-        if (err) {
-            res.status(500).json({message: false, data: "Session error"});
-        }
-        else{
-            try {
-                console.log(sess.bente);
-                if (sess.bente) {
-                    const tol = req.query.tol;
-                    pool.query(`SELECT kolcsonzesek.id, ugyfelek.szig, ugyfelek.nev, gepjarmuvek.id, gepjarmuvek.tipus, kolcsonzesek.kiad_datum, gepjarmuvek.km_ora, gepjarmuvek.szerviz_km, gepjarmuvek.napi_dij, gepjarmuvek.km_dij, gepjarmuvek.szerviz_dij FROM kolcsonzesek INNER JOIN ugyfelek ON ugyfelek.id = kolcsonzesek.ugyfel_id JOIN gepjarmuvek ON gepjarmuvek.id = kolcsonzesek.gepjarmu_id WHERE kolcsonzesek.visszahoz_datum is null LIMIT 5 OFFSET ${tol*5};`, (err, data1)=>{
-                        if (err) {
-                            res.status(500).json({message: false, data: "Adatbázis error"});
-                        }
-                        else{
-                            console.log(data1);
-                            res.status(200).json({message: true, data: data1, tol:tol});
-                        }
-                    })
-                }
-            } catch (error) {
-                res.status(500).json({message: false, data: "logout"})
-            }
-            
-        }
-    })
-}

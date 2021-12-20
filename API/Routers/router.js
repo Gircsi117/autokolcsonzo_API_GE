@@ -19,7 +19,7 @@ router.post("/car/:id", carController.carAdd);
 router.get("/autoszam/:id", carController.autoSzam);
 router.get("/foglalszam/:id", carController.foglalSzam)
 router.get("/autok/:id", carController.autok);
-router.get("/autok_foglal/:id", carController.autok_foglal);
+router.get("/autok_foglal/:id", kolcsonController.autok_foglal);
 
 
 router.post("/newKolcson/:id", kolcsonController.getNewKolcson)

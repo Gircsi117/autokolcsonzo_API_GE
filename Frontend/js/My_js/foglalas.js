@@ -139,6 +139,10 @@ document.getElementById("newKolcson").onsubmit = async (event)=>{
             autok_leker(0);
         }
         else{
+            selected = null;
+            $("#kivalasztTABLA").html("");
+            $("#szemFoglal").val("");
+
             alert(data.data)
             autok_leker(0);
             fizetendo_leker(0);
@@ -206,7 +210,7 @@ function foglal_kivalaszt(szam) {
         </tr>
         <tr>
             <td>Megtett km</td>
-            <td id="megtett"> km</td>
+            <td id="megtett"> </td>
         </tr>
         <tr>
             <td>Megtett km összeg</td>
@@ -278,5 +282,16 @@ async function szamol(params) {
     if (foglalt_selected.szerviz_km + megtett >= 10000) {
         errorMessage("errorMSG", "Szervízbe küldendő!", 1)
         $("#ossz").html(napi + fizet + foglalt_selected.szerviz_dij)
+    }
+}
+
+document.getElementById("foglal-form").onsubmit = (event)=>{
+    event.preventDefault();
+
+    if (foglalt_selected.km_ora > Number($("#megtettKm").val())) {
+        alert("A km óra nem lehet kissebb, mint mikor elvitték.")
+    }
+    else{
+        
     }
 }
