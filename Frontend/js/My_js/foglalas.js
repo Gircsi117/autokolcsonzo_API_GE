@@ -291,7 +291,7 @@ async function szamol(params) {
     }
 }
 
-document.getElementById("foglal-form").onsubmit = (event)=>{
+document.getElementById("foglal-form").onsubmit = async (event)=>{
     event.preventDefault();
 
     if (foglalt_selected.km_ora > Number($("#megtettKm").val())) {
@@ -317,9 +317,9 @@ document.getElementById("foglal-form").onsubmit = (event)=>{
 
         console.table(body)
 
-        const id = JSON.parse(sessionStorage.getItem("login")).id;
+        const sid = JSON.parse(sessionStorage.getItem("login")).id;
 
-        const url = `http://localhost:3000/fizetes/${id}`
+        const url = `http://localhost:3000/fizetes/${sid}`
 
         const response = await fetch(url, {
             method: 'POST',
@@ -329,5 +329,16 @@ document.getElementById("foglal-form").onsubmit = (event)=>{
             body: JSON.stringify(body)
         })
 
+        const data = await response.json();
+
+        if (response.status == 200) {
+            alert(data.data)
+            autok_leker(0);
+            fizetendo_leker(0);
+            errorMessage("errorMSG", "", 0)
+        }
+        else{
+            errorMessage("errorMSG", data.data, 1)
+        }
     }
 }

@@ -83,5 +83,41 @@ exports.autok_foglal = (req, res)=>{
 }
 
 exports.fizetes = (req, res)=>{
-    
+    const id = req.params.id
+    store.get(id, (err, sess)=>{
+        if (err) {
+            res.status(300).json({message:false, data:"Session error!"})
+        }
+        else{
+            pool.query(`UPDATE kolcsonzesek SET visszahoz_datum = "${req.body.visszahoz_datum}", km_ora_veg = ${req.body.km_ora_veg}, napszam = ${req.body.napszam}, ossz_km = ${req.body.ossz_km} WHERE id = ${req.body.id}`, (err)=>{
+                if (err) {
+                    res.status(300).json({message:false, data:"Adatbázis error! 1"})
+                }
+                else{
+                    var szoveg = "";
+                    if (req.body.szerviz_e) {
+                        szoveg = `, szerviz_km = szerviz_km + ${req.body.ossz_km} - 10000, status = 2`;
+                    }
+                    else{
+                        szoveg = `, szerviz_km = szerviz_km + ${req.body.ossz_km}, status = 0`;
+                    }
+                    pool.query(`UPDATE gepjarmuvek SET km_ora = ${req.body.km_ora_veg} ${szoveg} WHERE id = ${req.body.auto_id}`, (err)=>{
+                        if (err) {
+                            res.status(300).json({message:false, data:"Adatbázis error! 2"})
+                        }
+                        else{
+                            pool.query(`INSERT INTO egyenleg VALUES (null, CURRENT_TIMESTAMP, ${req.body.osszeg})`, (err)=>{
+                                if (err) {
+                                    res.status(300).json({message:false, data:"Adatbázis error! 3"})
+                                }
+                                else{
+                                    res.status(200).json({message:true, data:"Átadás sikeresen végrehajtva!"})
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
 }
