@@ -4,6 +4,8 @@ var autok;
 var foglaltak;
 var selected;
 var foglalt_selected;
+var datum;
+var napok;
 
 async function db_szam(params) {
     const id = JSON.parse(sessionStorage.getItem("login")).id;
@@ -176,10 +178,10 @@ async function fizetendo_leker(tol) {
 
             foglaltak.forEach(auto => {
                 //console.log(auto.kiad_datum);
-                var datum = new Date(auto.kiad_datum)
+                var elvisz_datum = new Date(auto.kiad_datum)
                 //console.log(datum);
                 //console.log((new Date() - datum) / 86400000);
-                var shortDate = `${datum.getFullYear()}-${datum.getMonth()+1}-${datum.getDate()}`
+                var shortDate = `${elvisz_datum.getFullYear()}-${elvisz_datum.getMonth()+1}-${elvisz_datum.getDate()}`
                 html += `<div class="row table-item">
                 <div class="col-6 d-flex d-md-none">Ügyfél</div>
                 <div class="col-6 col-md-3">${auto.szig}</div>
@@ -201,8 +203,9 @@ async function fizetendo_leker(tol) {
 function foglal_kivalaszt(szam) {
     var osszeg = 0;
     foglalt_selected = foglaltak[szam];
-    var datum = new Date(foglalt_selected.kiad_datum)
+    datum = new Date(foglalt_selected.kiad_datum)
     var shortDate = `${datum.getFullYear()}-${datum.getMonth()+1}-${datum.getDate()}`
+    napok = Math.ceil((new Date - datum) / 86400000)
     var html = `<table>
         <tr>
             <td>Km óra</td>
@@ -226,7 +229,7 @@ function foglal_kivalaszt(szam) {
         </tr>
         <tr>
             <td>Kint töltött napok</td>
-            <td>${Math.ceil((new Date - datum) / 86400000) }</td>
+            <td>${ napok }</td>
         </tr>
         <tr>
             <td>Nap összeg</td>
@@ -292,6 +295,23 @@ document.getElementById("foglal-form").onsubmit = (event)=>{
         alert("A km óra nem lehet kissebb, mint mikor elvitték.")
     }
     else{
-        
+        const id = JSON.parse(sessionStorage.getItem("login")).id;
+
+        var datum = new Date(foglalt_selected.kiad_datum)
+        var shortDate = `${datum.getFullYear()}-${datum.getMonth()+1}-${datum.getDate()}`
+        var megtett = Number($("#megtettKm").val()) - Number(foglalt_selected.km_ora)
+
+        const body = {
+            id: foglalt_selected.id,
+            auto_id: foglalt_selected.auto_id,
+            visszahoz_datum: shortDate,
+            napszam: napok,
+            km_ora_veg: Number($("#megtettKm").val()),
+            ossz_km: megtett,
+            osszeg: Number($("#ossz").html()),
+            szerviz_e: (foglalt_selected.szerviz_km + megtett >= 10000) ? (true) : (false)
+        }
+
+        console.log(body);
     }
 }
