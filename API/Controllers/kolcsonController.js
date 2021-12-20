@@ -81,3 +81,7 @@ exports.autok_foglal = (req, res)=>{
         }
     })
 }
+
+exports.fizetes = (req, res)=>{
+    
+}

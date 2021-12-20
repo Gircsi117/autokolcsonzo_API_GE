@@ -78,6 +78,7 @@ async function autok_leker(tol) {
             });
 
             $("#autok").html(html);
+            console.table(autok);
         }
     }
 }
@@ -148,6 +149,7 @@ document.getElementById("newKolcson").onsubmit = async (event)=>{
             alert(data.data)
             autok_leker(0);
             fizetendo_leker(0);
+
         }
     }
 }
@@ -196,6 +198,7 @@ async function fizetendo_leker(tol) {
             });
 
             $("#fizetAutok").html(html);
+            console.table(foglaltak);
         }
     }
 }
@@ -312,6 +315,19 @@ document.getElementById("foglal-form").onsubmit = (event)=>{
             szerviz_e: (foglalt_selected.szerviz_km + megtett >= 10000) ? (true) : (false)
         }
 
-        console.log(body);
+        console.table(body)
+
+        const id = JSON.parse(sessionStorage.getItem("login")).id;
+
+        const url = `http://localhost:3000/fizetes/${id}`
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        })
+
     }
 }
