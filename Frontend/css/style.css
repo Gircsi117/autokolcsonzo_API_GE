@@ -170,7 +170,13 @@ hr{
     display: flex;
     align-items: center;
     border-bottom: 1px solid gray;
-    padding: 5px 0px 5px 10px;
+    padding: 5px 0px 5px 0px;
+}
+
+.table-item div p{
+    padding: 0px;
+    margin: 0;
+    margin-left: 15px;
 }
 
 .table-item div:last-child{
@@ -206,13 +212,17 @@ hr{
     border: 1px solid rgb(0, 255, 255)
 }
 
-.car-form .page-link{
+.car-form .page-link, .cars .page-link, .cars .button{
     border: 1px solid rgb(0, 255, 255)
 }
 
-.car-form .page-link:hover{
+.car-form .page-link:hover, .cars .page-link:hover{
     border: 1px solid rgb(0, 255, 255);
     background-color: rgb(0, 255, 255);
+}
+
+.car_table .button:hover{
+    
 }
 
 @media (max-width: 992px) {
@@ -230,8 +240,7 @@ hr{
         border: 1px solid greenyellow;
     }
 
-    .car-form .table-item div:last-child{
+    .car-form .table-item div:last-child, .cars .button{
         border: 1px solid rgb(0, 255, 255);
     }
 }
-

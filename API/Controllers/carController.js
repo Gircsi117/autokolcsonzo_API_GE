@@ -109,3 +109,23 @@ exports.autok = (req, res)=>{
         }
     })
 }
+
+exports.allCar = (req, res)=>{
+    const id = req.params.id;
+    const tol = req.query.tol;
+    store.get(id, (err, sess)=>{
+        if (err) {
+            res.status(300).json({message: false, data: "Session error"})
+        }
+        else{
+            pool.query(`SELECT * FROM gepjarmuvek WHERE 1 LIMIT 10 OFFSET ${tol*10}`, (err, data1)=>{
+                if (err) {
+                    res.status(300).json({message: false, data: "Adatbázis error"})
+                }
+                else{
+                    res.status(200).json({message: true, data: data1})
+                }
+            })
+        }
+    })
+}

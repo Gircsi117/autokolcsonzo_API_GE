@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <div class="container p-3 mt-0 mt-sm-3">
+    <div class="container p-3 mt-0 mt-sm-3 cars">
         <form action="" class="car-form user-form col-11 col-sm-10 col-md-8 col-lg-6 d-block m-auto" id="car-form">
             <h1 class="text-light text-center">Jármű felvétel</h1>
             <em id="errorMSG"></em>
@@ -61,6 +61,16 @@
             </select>
             <input type="submit" value="Hozzáad">
         </form>
+        <div id="autok" class="text-light mt-5 car_table">
+
+        </div>
+        <nav aria-label="Page navigation example" style="margin-top: 15px;">
+            <ul class="pagination cars">
+                <li class="page-item col-4" id="FpreviousBTN"><p class="page-link">Previous</p></li>
+                <li class="page-item col-4"><p class="page-link" onclick="fizetendo_leker(0)">Home</p></li>
+                <li class="page-item col-4" id="FnextBTN"><p class="page-link" onclick="">Next</p></li>
+            </ul>
+        </nav>
     </div>
   
   <script src="./js/jquery-3.6.0.min.js"></script>
