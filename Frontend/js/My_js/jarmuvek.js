@@ -35,6 +35,7 @@ document.getElementById("car-form").onsubmit = async (event)=>{
     if (response.status == 200) {
         if (data.message) {
             alert("Adatok sikeresen feléve!")
+            all_auto(0)
         }
     }
     else{
