@@ -115,6 +115,10 @@ function kivalaszt(k) {
     selected = jarmuvek[k]
     console.table(selected)
 
+    document.getElementById("delete").onclick = ()=>{
+        torol("gepjarmuvek", selected.id)
+    }
+
     var body = {
         id: selected.id,
         gyarto: selected.gyarto,
