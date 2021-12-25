@@ -91,6 +91,10 @@ function kivalaszt(k) {
     selected = ugyfelek[k]
     console.table(selected);
 
+    document.getElementById("delete").onclick = ()=>{
+        torol("ugyfelek", selected.id)
+    }
+
     $("#Uname").val(selected.nev)
     $("#Uszig").val(selected.szig)
     $("#Ulakcim").val(selected.lakcim)

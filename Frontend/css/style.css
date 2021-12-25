@@ -58,8 +58,28 @@ em{
 
 }
 
+.delete{
+    background-color: rgb(33, 33, 33);
+    font-weight: bold;
+    color: white;
+    border: 2px solid rgb(252, 1, 1);
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
 .redirect:hover{
     background-color: rgb(175, 109, 252);
+    color: rgb(33, 33, 33);
+}
+
+.delete:hover{
+    background-color: rgb(255, 0, 0);
     color: rgb(33, 33, 33);
 
 }

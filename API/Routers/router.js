@@ -13,6 +13,8 @@ router.get("/logout/:id", userController.logout)
 router.post("/user/:id", userController.userUpdate)
 router.get("/user/:id", userController.userGet)
 
+router.get("/torol/:id", userController.torol)
+
 router.post("/ugyfel/:id", ugyfelController.ugyfelAdd);
 router.get("/allUgyfel/:id", ugyfelController.allUgyfel);
 router.post("/updateUgyfel/:id", ugyfelController.updateUgyfel)

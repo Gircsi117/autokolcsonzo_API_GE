@@ -133,3 +133,22 @@ function errorMessage(id, message, number) {
     $(`#${id}`).css("padding", `${(number*5)}px`)
     $(`#${id}`).css("border", `${number*1}px solid red`)
 }
+
+async function torol(table, elemId) {
+    const id = JSON.parse(sessionStorage.getItem("login")).id;
+
+    const response = await fetch(`http://localhost:3000/torol/${id}?table=${table}&elemId=${elemId}`);
+
+    const data = await response.json();
+
+    if (response.status == 200) {
+        alert(data.data);
+        document.location.reload()
+    }
+    else{
+        errorMessage("UerrorMSG", data.data, 1)
+        if (data.data.includes("Session")) {
+            log_out();
+        }
+    }
+}

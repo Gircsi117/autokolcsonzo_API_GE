@@ -149,3 +149,25 @@ exports.userGet = (req, res)=>{
         }
     })
 }
+
+exports.torol = (req, res)=>{
+    const id = req.params.id;
+    const table = req.query.table;
+    const elemId = req.query.elemId;
+
+    store.get(id, (err, sess)=>{
+        if (err) {
+            res.status(300).json({data:"Session error"})
+        }
+        else{
+            pool.query(`DELETE FROM ${table} WHERE id = ${elemId}`, (err)=>{
+                if (err) {
+                    res.status(300).json({data:"Adatbázis error"})
+                }
+                else{
+                    res.status(200).json({data:"Sikeresen törölve"})
+                }
+            })
+        }
+    })
+}
