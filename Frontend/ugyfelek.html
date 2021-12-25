@@ -49,6 +49,26 @@
             <input type="text" name="" id="lakcim" placeholder="Lakcím" required>
             <input type="submit" value="Hozzáad">
         </form>
+
+        <form action="" class="d-none ugyfel-form user-form col-11 col-sm-10 col-md-8 col-lg-6 d-block m-auto" id="ugyfel-form-update">
+            <h1 class="text-light text-center">Ügyfél update</h1>
+            <em id="UerrorMSG"></em>
+            <input type="text" name="" id="Uname" placeholder="Name" required>
+            <input type="text" name="" id="Uszig" placeholder="Személyi" required>
+            <input type="text" name="" id="Ulakcim" placeholder="Lakcím" required>
+            <input type="submit" value="Update">
+            <p class="redirect" onclick='class_valt_form("ugyfel-form-update", "ugyfel-form", "d-none")'>Felvesz</p>
+        </form>
+        <div id="ugyfelek" class="text-light mt-5 user_table">
+
+        </div>
+        <nav aria-label="Page navigation example" style="margin-top: 15px;">
+            <ul class="pagination">
+                <li class="page-item col-4" id="previousBTN"><p class="page-link">Previous</p></li>
+                <li class="page-item col-4"><p class="page-link" onclick="all_auto(0)">Home</p></li>
+                <li class="page-item col-4" id="nextBTN"><p class="page-link" onclick="">Next</p></li>
+            </ul>
+        </nav>
     </div>
     
     <script src="./js/jquery-3.6.0.min.js"></script>

@@ -14,6 +14,8 @@ router.post("/user/:id", userController.userUpdate)
 router.get("/user/:id", userController.userGet)
 
 router.post("/ugyfel/:id", ugyfelController.ugyfelAdd);
+router.get("/allUgyfel/:id", ugyfelController.allUgyfel);
+router.post("/updateUgyfel/:id", ugyfelController.updateUgyfel)
 
 router.post("/car/:id", carController.carAdd);
 router.get("/autoszam/:id", carController.autoSzam);
@@ -24,8 +26,6 @@ router.post("/updateCar/:id", carController.updateCar)
 
 router.get("/autok_foglal/:id", kolcsonController.autok_foglal);
 router.post("/fizetes/:id", kolcsonController.fizetes);
-
-
 router.post("/newKolcson/:id", kolcsonController.getNewKolcson)
 
 
