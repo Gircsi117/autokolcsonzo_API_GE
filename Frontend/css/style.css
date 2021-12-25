@@ -42,7 +42,8 @@ em{
     text-align: center;
 }
 
-.user-form .redirect{
+.redirect{
+    background-color: rgb(33, 33, 33);
     font-weight: bold;
     color: white;
     border: 2px solid rgb(175, 109, 252);
@@ -57,7 +58,7 @@ em{
 
 }
 
-.user-form .redirect:hover{
+.redirect:hover{
     background-color: rgb(175, 109, 252);
     color: rgb(33, 33, 33);
 

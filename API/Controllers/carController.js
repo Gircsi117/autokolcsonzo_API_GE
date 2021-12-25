@@ -129,3 +129,23 @@ exports.allCar = (req, res)=>{
         }
     })
 }
+
+exports.updateCar = (req, res)=>{
+    const id = req.params.id;
+
+    store.get(id, (err, sess)=>{
+        if (err) {
+            res.status(300).json({message:false, data:"Session error"})
+        }
+        else{
+            pool.query(`UPDATE gepjarmuvek SET gyarto='${req.body.gyarto}', tipus='${req.body.tipus}', km_ora=${req.body.km_ora} ,szerviz_dij=${req.body.szerviz_dij}, napi_dij=${req.body.napi_dij}, km_dij=${req.body.km_dij}, szerviz_km=${req.body.szerviz_km}, status=${req.body.status} WHERE id = ${req.body.id}`, (err)=>{
+                if (err) {
+                    res.status(300).json({message:false, data:"Adatbázis error"})
+                }
+                else{
+                    res.status(200).json({message:false, data:"Adatok sikeresen módosítva"})
+                }
+            })
+        }
+    })
+}
